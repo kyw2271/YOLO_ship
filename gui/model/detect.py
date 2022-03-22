@@ -53,7 +53,7 @@ from utils.torch_utils import select_device, time_sync
 
 root = Tk() 
 #gui이름
-root.title("gui test project")
+root.title("6_class_ship_detecting_model")
 
 # 동영상 라벨
 lmain = Label(root)
@@ -206,7 +206,7 @@ def run(weights=[] ,  # model.pt path(s)
                 #cv2.imshow("mytest", im0)
                 
 
-                im1 = cv2.resize(im0,dsize=(320,120),interpolation=cv2.INTER_LINEAR)
+                im1 = cv2.resize(im0,dsize=(640,320),interpolation=cv2.INTER_LINEAR)
 
                 img = Image.fromarray(im1)
 
@@ -268,7 +268,7 @@ file_button_frame.pack(fill="x", padx=5, pady=5)
 
 def file_open_fun():
   files = filedialog.askopenfilenames(title= "이미지 파일을 선택하세요",\
-    filetypes= (("PNG 파일", "*.png"), ("모든 파일", "*.*")),
+    filetypes= (("MP4 파일", "*.mp4"), ("PNG 파일", "*.png"), ("모든 파일", "*.*")),
     #최초에 보여줄 dir를 명시
     #r을 쓰면 넣어준 문자그대로를 경로로 사용
     initialdir=r"D:\파이선GUI공부\guiproject\예시사진"
@@ -320,7 +320,7 @@ scrollbar.pack(side="right", fill="y")
 
 #리스트박스를 실제 구현
 #리스트 프레임 넣고, 높이는 15면 한번에 15개의 파일을 보고, 스크롤바와 연동하기 위해 yscrollcommand=scrollbar.set으로 스크롤바와 매핑-1
-list_file = Listbox(list_frame, selectmode="extended", height =15, yscrollcommand=scrollbar.set)
+list_file = Listbox(list_frame, selectmode="extended", height =10, yscrollcommand=scrollbar.set)
 list_file.pack(side="left",fill ="both", expand=True)
 
 #스크롤바 -> 리스트파일과 mapping-2
@@ -345,10 +345,10 @@ select_file_button_frame.pack(fill="both", padx=5, pady=5)
 
 #3-1 선택한 파일 경로 넘기기 버튼 함수
 
-def file_send_func():
-  for index in list_file.curselection():
-    #print(list_file.get(index))
-    file_path_arr.append(list_file.get(index))
+# def file_send_func():
+#   for index in list_file.curselection():
+#     #print(list_file.get(index))
+#     file_path_arr.append(list_file.get(index))
 
 
 
@@ -373,9 +373,9 @@ def file_path():
 
 #3-1선택한 파일 경로 넘기기 버튼 
 
-#send button
-file_send_button = Button(select_file_button_frame,text="파일 경로 보내기", padx=5, pady=5, width=15, command=file_send_func)
-file_send_button.pack(side="left")
+# #send button
+# file_send_button = Button(select_file_button_frame,text="파일 경로 보내기", padx=5, pady=5, width=15, command=file_send_func)
+# file_send_button.pack(side="left")
 
 
 #3-2선택된 파일 삭제 버튼
@@ -384,32 +384,32 @@ file_del_button.pack(side="right")
 
 
 
-#3-3 경로저장 확인 
-file_path_button = Button(select_file_button_frame,text="경로 확인", padx=5, pady=5, width=15, command=file_path)
-file_path_button.pack(side="right")
+# #3-3 경로저장 확인 
+# file_path_button = Button(select_file_button_frame,text="경로 확인", padx=5, pady=5, width=15, command=file_path)
+# file_path_button.pack(side="right")
 
 
 
 #------------------------------------------------------------------------------------------------------------------
 
-#4-1 선택된 사진 보기 
-photo_frame = Frame(root)
-photo_frame.pack(fill="x", padx=5, pady=5)
+# #4-1 선택된 사진 보기 
+# photo_frame = Frame(root)
+# photo_frame.pack(fill="x", padx=5, pady=5)
 
-def photo_open():
+# def photo_open():
   
-  my_img = PhotoImage(file = "D:\파이선GUI공부/check.png",width=10,height=10)
-  my_label = Label(root, image=my_img)
-  my_label.pack(expand=1, anchor=CENTER)
+#   my_img = PhotoImage(file = "D:\파이선GUI공부/check.png",width=10,height=10)
+#   my_label = Label(root, image=my_img)
+#   my_label.pack(expand=1, anchor=CENTER)
 
-  print(my_img)
-
-
+#   print(my_img)
 
 
 
-photo_open_button = Button(photo_frame,text="사진 보기", padx=5, pady=5, width=10, command=photo_open)
-photo_open_button.pack(side="left")
+
+
+# photo_open_button = Button(photo_frame,text="사진 보기", padx=5, pady=5, width=10, command=photo_open)
+# photo_open_button.pack(side="left")
 
 
 # photo_label_frame= LabelFrame(root, text="사진")
@@ -424,7 +424,7 @@ lbl1.grid()
 
 
 
-root.geometry("1600x1024")
+root.geometry("800x600")
 root.mainloop()
 
 
